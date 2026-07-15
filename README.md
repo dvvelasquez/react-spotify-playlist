@@ -1,3 +1,45 @@
+# React Spotify Playlist App
+
+A modern full-stack Spotify Playlist application built with React, Vite, and the Spotify Web API.
+
+This project allows users to search for Spotify tracks, create custom playlists, and save them to their Spotify account. This app is being developed following modern software engineering best practices, including reusable React components, feature-based Git workflows, clean architecture, REST API integration, and responsive UI design.
+
+The application will be deployed to **Netlify** for the frontend, providing a live production environment to showcase the completed project.
+
+## Project Features
+
+- 🎵 Search tracks using the Spotify Web API
+- 📀 Browse albums, artists, and songs
+- ➕ Add and remove tracks from playlists
+- 💾 Save custom playlists to Spotify
+- 🔐 User authentication with Spotify OAuth
+- ⚡ Fast development using Vite
+- 🎨 Responsive UI built with React and Tailwind CSS
+- 🌐 Production deployment with Netlify
+- 🧩 Reusable component architecture
+- 🚀 REST API integration and asynchronous data fetching
+
+## Tech Stack
+
+- React
+- Vite
+- JavaScript (ES6+)
+- Tailwind CSS
+- Spotify Web API
+- Node.js
+- Express.js
+- MongoDB
+- JWT Authentication
+- Git & GitHub
+- Netlify
+
+## Project Goals
+
+I'm developing this project as part of my portfolio project to strengthen my Full-Stack Software Development skills. The focus is not only on building a fully functional application but also on applying professional development practices such as clean architecture, reusable components, scalable folder structures, feature-based Git workflows, API integration, authentication, testing, deployment, and maintainable code.
+
+The completed application will be publicly available via **Netlify**, allowing recruiters and other developers to explore the project in a live production environment.
+
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
