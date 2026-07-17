@@ -1,0 +1,13 @@
+.loggedInProfile {
+    .navItemLink {
+        border-bottom: 1px solid #d1d5dc;
+    }
+
+    .navItem {
+        &:last-child {
+            .navItemLink {
+                border: none !important;
+            }
+        }
+    }
+}
