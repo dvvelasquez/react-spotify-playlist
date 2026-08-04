@@ -1,9 +1,17 @@
+import BannerImage from '../components/Banner/Banner';
+import SongCard from '../components/SongCard/SongList';
+import { mockSongs } from '../data/mockSongs';
+
 export default function Homepage() {
     return (
-        <>
-            <h1 className="text-3xl font-bold underline">
-                Hello world!
-            </h1>
-        </>
+        <div className="text-white py-10">
+            <BannerImage />
+
+            <div className='songsContainer'>
+                {mockSongs.map(song => (
+                    <SongCard song={song} key={song.id} />
+                ))}
+            </div>
+        </div>
     )
 }
