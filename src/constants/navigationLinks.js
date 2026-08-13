@@ -1,4 +1,4 @@
-import { ROUTES } from "./routes"
+import { ROUTES } from "./routes";
 
 export const mainNavigation  = [
     {
@@ -37,6 +37,6 @@ export const profileNavigation = [
     {
         name: 'Sign Out',
         path: '#',
-        navClass: "signOutLink"
+        navClass: "signOutLink",
     }
 ]

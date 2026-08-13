@@ -15,7 +15,7 @@ export default function Navbar() {
     const handleCloseMenu = () => {
         if (isLoggedIn && isOpenProfile) {
             setIsOpenProfile(false);
-            setIsLoggedIn(false);
+            setIsLoggedIn(true)
             return;
         }
 
@@ -90,11 +90,12 @@ export default function Navbar() {
                                 </button>
 
                                 {isOpenProfile && <div id="profile-menu" className="z-10 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg outline outline-black/5 transition transition-discrete [--anchor-gap:--spacing(2)] absolute right-0 top-10">
-                                    {profileNavigation?.map(({ name, path, navClass }) => (
+                                    {profileNavigation?.map(({ name, path, navClass, onClick }) => (
                                         <NavItems
                                             key={`mobile-${name}`}
                                             name={name}
                                             path={path}
+                                            onClick={onClick}
                                             handleCloseMenu={handleCloseMenu}
                                             classNavName={`${navStyles.navItem} list-none px-4`}
                                             classLinkName={`${navStyles.navItemLink} ${navClass} block py-2 text-sm text-gray-700 focus:bg-gray-100 focus:outline-hidden`}

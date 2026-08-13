@@ -7,7 +7,7 @@ export default function BannerImage() {
                 className="flex flex-wrap content-center w-full h-[44vw] sm:h-[19vw] xl:h-[15vw] bg-center bg-cover bg-no-repeat"
                 style={{ backgroundImage: `url(${topBanner})` }}
             >
-                <h1 className='px-10 text-xl font-bold'>Spotify Free API</h1>
+                <h1 className='px-10 text-white text-3xl font-bold'>Spotify API</h1>
             </div>
         </div>
     )
