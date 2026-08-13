@@ -1,10 +1,18 @@
 import { NavLink } from 'react-router-dom';
 
-export default function NavItems({ name, path, handleCloseMenu, classNavName, classLinkName }) {
+export default function NavItems({ name, path, onClick, handleCloseMenu, classNavName, classLinkName }) {
+    const handleClick = (event) => {
+        if (onClick) {
+            event.preventDefault();
+            onClick();
+        }
+
+        handleCloseMenu?.();
+    };
     return (
         <li
             className={classNavName}
-            onClick={handleCloseMenu}
+            onClick={handleClick}
         >
             <NavLink
                 to={path}

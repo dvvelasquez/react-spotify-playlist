@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { ROUTES } from './constants/routes'
+import { ROUTES } from './constants/routes';
 
 // Imported Pages
 import MainLayout from "./components/Layout/MainLayout";
@@ -7,7 +7,6 @@ import Homepage from './pages/HomePage';
 import SavedSongs from "./pages/SavedSongs";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-
 
 function App() {
     return (
