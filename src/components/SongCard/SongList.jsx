@@ -1,16 +1,26 @@
+import { useState } from 'react';
 import AlbumImage from './AlbumImage';
 import SongInfo from './SongInfo';
 import Icon from '../Icon/Icon';
 import { FaHeart } from 'react-icons/fa';
+import { storage } from '../../utils/storage/storage';
 
-export default function SongCard({ song }) {
+export default function SongCard({ track, onTrackSaved }) {
+    const [ isTrackSaved, setIsTrackSaved ] = useState(storage.isAlreadySaved(track));
     const {
         albumName,
         artist,
         songLink,
         duration,
         srcImage,
-    } = song;
+    } = track;
+
+    const handleStorage = () => {
+        storage.setStorage(track);
+        setIsTrackSaved(prev => !prev);
+
+        onTrackSaved(track, isTrackSaved);
+    }
 
     return (
         <div className="py-4" >
@@ -22,9 +32,22 @@ export default function SongCard({ song }) {
                         className={'hover:scale-103 transition-all duration-500'}
                     />
                 </a>
-                <div className='absolute top-3 right-3 bg-slate-100/30 rounded-full z-100 hover:bg-slate-50 transition-colors duration-300'>
-                    <button type="button" className='cursor-pointer block'>
-                        <Icon icon={FaHeart} className='size-7 p-1.5 opacity-60 hover:fill-blue-500 transition-colors duration-300' />
+                <div className={`
+                    absolute top-3 right-3 rounded-full z-100 hover:bg-slate-50 transition-colors duration-300
+                    ${isTrackSaved ? 'bg-slate-50' : 'bg-slate-100/30'}
+                `}>
+                    <button
+                        type="button"
+                        className='cursor-pointer block'
+                        onClick={handleStorage}
+                    >
+                        <Icon
+                            icon={FaHeart}
+                            className={`
+                                size-7 p-1.5 opacity-60 hover:fill-blue-500 transition-colors duration-300
+                                ${isTrackSaved ? 'fill-blue-500' : 'fill-slate-50'}
+                            `}
+                        />
                     </button>
                 </div>
             </div>
