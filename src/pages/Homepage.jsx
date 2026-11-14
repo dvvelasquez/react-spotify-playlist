@@ -1,14 +1,18 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import BannerImage from '../components/Banner/Banner';
 import SongCard from '../components/SongCard/SongList';
 import { fetchSpotifyAPI } from '../api/spotify';
 import { songsFormatter } from '../utils/formatters';
 import { mockSongs } from '../data/mockSongs';
 import Notification from '../components/Notification/Notification';
+import useNotification from '../hooks/useNotification';
+import Spinner from '../components/Spinner/Spinner';
 
 export default function Homepage() {
     const [ tracks, setTracks ] = useState([]);
     const [ loading, setLoading ] = useState(true);
+    const [ loadingMore, setLoadingMore ] = useState(false);
+    const [ hasMore, setHasMore ] = useState(true);
     const [ error, setError ] = useState(null);
     const [ offset, setOffset ] = useState(0);
     const {
@@ -22,7 +26,11 @@ export default function Homepage() {
     // useEffect(() => {
     //     async function fetchSongs() {
     //         try {
-    //             setLoading(true);
+    //             if (offset === 0) {
+    //                 setLoading(true);
+    //             } else {
+    //                 setLoadingMore(true);
+    //             }
 
     //             const limit = offset === 0
     //                 ? initialLimit
@@ -40,7 +48,9 @@ export default function Homepage() {
     //             } else {
     //                 setTracks(prevTracks => {
     //                     const existingIds = new Set(prevTracks.map(track => track.id));
-    //                     const filteredTracks = formatterdTracks.filter(track => !existingIds.has(track.id));
+    //                     const filteredTracks = formatterdTracks.filter(
+    //                         track => !existingIds.has(track.id)
+    //                     );
 
     //                     return [
     //                         ...prevTracks,
@@ -49,6 +59,8 @@ export default function Homepage() {
     //                 })
     //             }
 
+    //             setHasMore(formatterdTracks.length === limit);
+
     //             // const getArtistId = await fetchSpotifyAPI(`/search?q=chris%20brown`);
     //             // console.log(getArtistId);
     //         }
@@ -56,7 +68,11 @@ export default function Homepage() {
     //             setError(error.message);
     //         }
     //         finally {
-    //             setLoading(false);
+    //             if (offset === 0) {
+    //                 setLoading(false);
+    //             } else {
+    //                 setLoadingMore(false);
+    //             }
     //         }
     //     }
 
@@ -92,7 +108,7 @@ export default function Homepage() {
     };
 
     return (
-        <div className="py-10 relative">
+        <div className="relative">
             {notification?.type === "success" && (
                 <Notification
                     notification={notification}
@@ -102,13 +118,11 @@ export default function Homepage() {
 
             <BannerImage />
 
-            <div className="text-white">
+            <div className="text-white max-w-7xl mx-auto px-4 mb-12.5">
                 <h2 className="text-4xl font-bold">Top Tracks</h2>
 
                 {loading ? (
-                    <div className="flex items-center justify-center">
-                        <div className="h-8 w-8 animate-spin rounded-full border-4 border-slate-400 border-t-transparent"></div>
-                    </div>
+                    <Spinner />
                 ) : error ? (
                     <h3>{error}</h3>
                 ) : (
@@ -122,10 +136,13 @@ export default function Homepage() {
                                 />
                             ))}
                         </div>
-                        {tracks.length < 20 && (
+                        {loadingMore && (
+                            <Spinner />
+                        )}
+                        {hasMore && (
                             <div className="flex items-center justify-center">
                                 <button
-                                    className="cursor-pointer rounded-full py-2 px-6 text-sm font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 bg-blue-600 text-white hover:text-slate-100 hover:bg-blue-500 active:bg-blue-800 active:text-blue-100 focus-visible:outline-blue-600"
+                                    className="cursor-pointer rounded-full py-4 px-6 text-sm font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 bg-blue-600 text-white hover:text-slate-100 hover:bg-blue-500 active:bg-blue-800 active:text-blue-100 focus-visible:outline-blue-600"
                                     onClick={handleLoadMoreSongs}
                                 >
                                     Load More

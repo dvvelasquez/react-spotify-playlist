@@ -7,6 +7,7 @@ import Homepage from './pages/HomePage';
 import SavedSongs from "./pages/SavedSongs";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import SearchResult from "./pages/SearchResults";
 
 function App() {
     return (
@@ -16,6 +17,7 @@ function App() {
                 <Route path={ROUTES.SAVED_SONGS} element={<SavedSongs />} />
                 <Route path={ROUTES.LOGIN} element={<Login />} />
                 <Route path={ROUTES.REGISTER} element={<Register />} />
+                <Route path={ROUTES.SEARCH} element={<SearchResult />} />
             </Route>
         </Routes>
     )

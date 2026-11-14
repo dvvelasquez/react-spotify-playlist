@@ -3,6 +3,9 @@ import { storage } from "../utils/storage/storage";
 import SongCard from "../components/SongCard/SongList";
 import Notification from '../components/Notification/Notification';
 import useNotification from "../hooks/useNotification";
+import { ROUTES } from "../constants/routes";
+import Icon from "../components/Icon/Icon";
+import { FaMusic } from "react-icons/fa";
 
 export default function SavedSongs() {
     const [ tracks, setTracks ] = useState(storage.getStorage());
@@ -25,7 +28,7 @@ export default function SavedSongs() {
                     showNotification={showNotification}
                 />
             )}
-            <div className="text-white">
+            <div className="text-white max-w-7xl mx-auto px-4">
                 <h1 className="text-4xl font-bold">Your Song Collection</h1>
 
                 {tracks.length > 0 ? (
@@ -40,9 +43,12 @@ export default function SavedSongs() {
                     </div>
                 ) : (
                     <div className="mt-5">
+                        <div className="mb-5 bg-green-500 w-fit p-8 mx-auto rounded-full">
+                            <Icon icon={FaMusic} />
+                        </div>
                         <p className="text-center text-2xl">Your collection is empty</p>
                         <p className="text-center mt-2">
-                            Save your favourite songs to see them here.
+                            Save your <a className="underline underline-offset-3 text-green-500" href={ROUTES.HOME}>favourite songs</a> to see them here.
                         </p>
                     </div>
                 )}
