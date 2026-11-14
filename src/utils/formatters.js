@@ -36,8 +36,6 @@ const spotifyLinkFormatter = (uri) => {
 
 const songsFormatter = (data) => {
     const tracks = getTracks(data);
-    console.log(tracks);
-
     const artistObj = tracks.map(singer => {
         return {
             albumName: singer.albumOfTrack.name,

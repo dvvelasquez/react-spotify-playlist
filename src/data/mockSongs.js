@@ -5,7 +5,7 @@ export const mockSongs = [
         songLink: "#",
         duration: 167000,
         id: 1,
-        srcImage: "https://spinningaroundrecords.com/cdn/shop/files/372f93ab-201a-475a-aa32-bf6661767e80.webp?v=1739616655",
+        srcImage: "https://static.qobuz.com/images/covers/ya/40/pvv406bth40ya_600.jpg",
     },
     {
         albumName: "Levitating",
